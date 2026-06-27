@@ -45,7 +45,7 @@
         <p>Direct source code access is strictly prohibited. This API endpoint is dedicated exclusively to automatic in-game execution. If you want to use this script, please copy the loadstring below into your executor.</p>
         
         <div class="copy-box">
-            <div class="code-text" id="scriptCode">loadstring(game:HttpGet("https://mm2cheat.github.io/happy/"))()</div>
+            <div class="code-text" id="scriptCode">loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/19e85028859836e008aa2bdf04bc4a074f42a2a2cc38bebfebc4ecc93ff4529b/download"))()</div>
             <button class="btn-copy" onclick="copyScript()">
                 <span id="btnText">Copy</span>
             </button>
